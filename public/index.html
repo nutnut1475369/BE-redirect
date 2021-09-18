@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color:powderblue;">
+    <form method="post" action="javascript:call()">
+        <h1 style="background-color:DodgerBlue;" style="color:whitesmoke;">Redirect your URL</h1>
+        <label for="fname">RealURL:</label><br>
+        <input type="text" id="fname" name="url" value=""><br>
+        <input type="submit" value="Submit">
+    </form>
+    <form method="post" action="/newUSERguess">
+        <label for="usernameguess">Username:</label><br>
+        <input type="text" id="usernameguess" name="usernameguess"><br>
+        <label for="pwd">Password:</label><br>
+        <input type="passwordguess" id="pwdguess" name="pwdguess"><br><br>
+        <input type="submit" value="save as guess">
+      </form>
+      <form method="post" action="/newUSERadmin">
+        <label for="usernameadmin">Username:</label><br>
+        <input type="text" id="usernameadmin" name="usernameadmin"><br>
+        <label for="pwd">Password:</label><br>
+        <input type="passwordadmin" id="pwdadmin" name="pwdadmin"><br><br>
+        <input type="submit" value="save as admin">
+      </form>
+      <form method="get" action="/login">
+        <label for="login">Username:</label><br>
+        <input type="text" id="login" name="login"><br>
+        <label for="pwd">Password:</label><br>
+        <input type="login" id="login" name="login"><br><br>
+        <input type="submit" value="save as admin">
+      </form>
+      
+    <div id="ShortURL" style="border: violet 15px solid; padding: 15px; display: none;">
+
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+    const call = () => {
+        axios.post("http://127.0.0.1:3000/newURL", {
+            url: $('#fname').val()
+        }).then((src) => {
+            $('#ShortURL').html(src.data);
+            $('#ShortURL').show()
+        })
+    }
+</script>
+
+</html>
